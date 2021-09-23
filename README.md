@@ -87,3 +87,11 @@ void initState{
 showRewardedAd();
 ```
 
+Get result reward value from the rewarded ad using the function 'getReward()'. This returns the value of reward in integers
+
+```
+//get value of reward
+int rewardValue = getReward()
+```
+
+for any of the ads, save the ads.dart file and call all the functions from the file
