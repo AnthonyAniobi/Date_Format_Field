@@ -16,11 +16,13 @@
 ```
 
 <p>Import the library for the google mobile admob</p>
+
 ```
     import 'package:google_mobile_ads/google_mobile_ads.dart';
 ```
 
 <p>Initialize the admob in your main file</p>
+
 ```
     void main() {
     WidgetsFlutterBinding.ensureInitialized();
