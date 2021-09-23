@@ -48,10 +48,42 @@ android{
     }
 ```
 
-load the banner ad using the code below 'bannerAd.load()' in the initState method
+<h3>Banner Ads</h3>
+load the banner ad using the code below 'bannerAd.load()' in the initState method and call the banner ad widget using the 'showAd()' function. This is placed in the widget tree.
 
 ```
-bannerAd.load();
+// load the banner ad
+void initState{
+    bannerAd.load();
+}
+
+//start the banner ad
+showAd()
 ```
 
-put t
+<h3>Interstitial Ads</h3>
+load the Interstitial ad in the initstate function using the 'createInterstitialAd()' and show the interstitial ads using the function 'showInterstitialAd()'. Note the interstitial ad is not a widget and should not be placed within the widget tree. It should rather be put in a button or in an event that should be triggered
+
+```
+//load the interstitial Ad
+void initState{
+    createInterstitialAd();
+}
+
+//start the interstitial Ad
+showInterstitialAd()
+```
+
+<h3>Reward Ads</h3>
+loading the reward ads like other ads using the 'createRewardedAd()' function and then show the reward ad using 'showRewardAd()'. The reward ad is also not a widget and should be called on an event
+
+```
+//load the reward Ad
+void initState{
+    createRewardedAd();
+}
+
+//start the reward Ad
+showRewardedAd();
+```
+
