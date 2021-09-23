@@ -15,6 +15,22 @@
             android:value="your admob id"/>
 ```
 
+<p>Increase the minimum sdk to 19 and above</p>
+
+```
+android{
+    defaultConfig{
+        minSdkVersion 19
+    }
+}
+```
+
+<p>Add internet permission to your application</p>
+
+```
+<uses-permission android:name="android.permission.INTERNET"/>
+```
+
 <p>Import the library for the google mobile admob</p>
 
 ```
@@ -31,3 +47,11 @@
     runApp(MyApp());
     }
 ```
+
+load the banner ad using the code below 'bannerAd.load()' in the initState method
+
+```
+bannerAd.load();
+```
+
+put t

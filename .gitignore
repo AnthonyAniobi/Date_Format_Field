@@ -12,3 +12,6 @@ reusable_features.iml
 pubspec.yaml
 .flutter-plugins
 .flutter-plugins-dependencies
+build
+
+constants.dart
