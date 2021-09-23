@@ -9,3 +9,6 @@ web
 analysis_options.yaml
 pubspec.lock
 reusable_features.iml
+pubspec.yaml
+.flutter-plugins
+.flutter-plugins-dependencies
