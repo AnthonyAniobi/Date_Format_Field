@@ -1,0 +1,4 @@
+remanme android: label="App Name"
+
+andorid/app/src/main/Manifest.xml
+

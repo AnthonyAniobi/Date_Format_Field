@@ -13,6 +13,10 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   google_mobile_ads: ^0.13.4
+  flutterwave: ^1.0.1
+  flutterwave_standard: ^1.0.1
+  uuid: ^3.0.4
+  
 
 dev_dependencies:
   flutter_test:
