@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwave_standard/flutterwave.dart';
-import 'package:flutterwave_standard/models/subaccount.dart';
 import 'package:uuid/uuid.dart';
 
 class FlutterWaveStandard extends StatefulWidget {
@@ -21,70 +20,33 @@ class _FlutterWaveStandardState extends State<FlutterWaveStandard> {
   String user_phoneNumber = "09092202826";
   String payment_narration = "sample payment";
   String payment_amount = "1000";
+  List<String> currencies = ["NGN", "RWF", "UGX", "ZAR", "USD", "GHS"];
   //end user requirements
 
-  final formKey = GlobalKey<FormState>();
-  final currencyController = TextEditingController();
   final narrationController = TextEditingController();
 
-  String selectedCurrency = "";
+  String selectedCurrency = "USD";
 
-  bool isTestMode = true;
-  final pbk = "FLWPUBK_TEST";
+  bool isTestMode = false;
+  // final pbk = "FLWPUBK_TEST";
 
   @override
   Widget build(BuildContext context) {
-    this.currencyController.text = this.selectedCurrency;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Container(
-        width: double.infinity,
-        margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-        child: Form(
-          key: this.formKey,
-          child: ListView(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                child: TextFormField(
-                  controller: this.currencyController,
-                  textInputAction: TextInputAction.next,
-                  style: TextStyle(color: Colors.black),
-                  readOnly: true,
-                  onTap: this._openBottomSheet,
-                  decoration: InputDecoration(
-                    hintText: "Currency",
-                  ),
-                  validator: (value) =>
-                      value!.isNotEmpty ? null : "Currency is required",
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 50,
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                child: ElevatedButton(
-                  onPressed: this._onPressed,
-                  child: Text(
-                    "Make Payment",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              )
-            ],
-          ),
+        child: ElevatedButton(
+          onPressed: this._onPressed,
+          child: Text("make payment"),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
   _onPressed() {
-    if (this.formKey.currentState!.validate()) {
-      this._handlePaymentInitialization();
-    }
+    this._handlePaymentInitialization();
   }
 
   _handlePaymentInitialization() async {
@@ -119,7 +81,8 @@ class _FlutterWaveStandardState extends State<FlutterWaveStandard> {
     final Customer customer = Customer(
         name: user_name, phoneNumber: user_phoneNumber, email: user_email);
 
-    final Flutterwave flutterwave = Flutterwave(
+    try {
+      final Flutterwave flutterwave = Flutterwave(
         context: context,
         style: style,
         publicKey: user_pulicKey,
@@ -129,57 +92,39 @@ class _FlutterWaveStandardState extends State<FlutterWaveStandard> {
         customer: customer,
         paymentOptions: "card, payattitude",
         customization: Customization(title: "Test Payment"),
-        isTestMode: isTestMode);
-    final ChargeResponse response = await flutterwave.charge();
-    if (response != null) {
-      this.showLoading(response.status.toString());
-      print("${response.toJson()}");
-    } else {
-      this.showLoading("No Response!");
+        isTestMode: isTestMode, // do something here
+      );
+      final ChargeResponse response = await flutterwave.charge();
+      if (response != null) {
+        this.showLoading(response.status.toString());
+        print("${response.toJson()}");
+      } else {
+        this.showLoading("No Response!");
+      }
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text("Something went wrong"),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Cancel")),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) {
+                        return FlutterWaveStandard("payment");
+                      }));
+                    },
+                    child: Text("Retry")),
+              ],
+            );
+          });
     }
-  }
-
-  void _openBottomSheet() {
-    showModalBottomSheet(
-        context: this.context,
-        builder: (context) {
-          return this._getCurrency();
-        });
-  }
-
-  Widget _getCurrency() {
-    final currencies = ["NGN", "RWF", "UGX", "ZAR", "USD", "GHS"];
-    return Container(
-      height: 250,
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-      color: Colors.white,
-      child: ListView(
-        children: currencies
-            .map((currency) => ListTile(
-                  onTap: () => {this._handleCurrencyTap(currency)},
-                  title: Column(
-                    children: [
-                      Text(
-                        currency,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      SizedBox(height: 4),
-                      Divider(height: 1)
-                    ],
-                  ),
-                ))
-            .toList(),
-      ),
-    );
-  }
-
-  _handleCurrencyTap(String currency) {
-    this.setState(() {
-      this.selectedCurrency = currency;
-      this.currencyController.text = currency;
-    });
-    Navigator.pop(this.context);
   }
 
   Future<void> showLoading(String message) {
