@@ -100,3 +100,6 @@ for any of the ads, save the ads.dart file and call all the functions from the f
 <p>check out the instructions in "features/company_name.txt" to modify the company name and \b checkout instructions in "features/app_name.txt" to change application name\b</p>
 unfortunately, the setup for ios application is currently not available
 
+<h2>Flutter wave</h2>
+
+An integration for payment using flutterwave. This is to simplify the process of adding payment to applicaitons
