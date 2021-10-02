@@ -2,8 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutterwave_standard/flutterwave.dart';
 import 'package:uuid/uuid.dart';
 
+
+bool makePayment({
+  required BuildContext context,
+  required int amount,
+  required int currency,
+  required String encryptionKey,
+  required String publicKey,
+  required String phoneNumber,
+  required String paymentNarration,
+  required String userName,
+  required String userEmail,
+  required String paymentTitle,
+  })
+{
+  bool val = false; // the output value
+
+  handlePaymentInitialization(
+    context: context,
+    amount: amount,
+    currency: currency,
+    encryptionKey: encryptionKey,
+    publicKey: publicKey,
+    phoneNumber: phoneNumber,
+    paymentNarration: paymentNarration,
+    userName: userName,
+    userEmail: userEmail,
+    paymentTitle: paymentTitle
+  ).then((result){ val = result;});
+
+  return val;
+}
+
+
 // simplified payment using the standard flutterwave package
-handlePaymentInitialization({
+Future<bool> handlePaymentInitialization({
   required BuildContext context,
   required int amount,
   required int currency,
@@ -18,8 +51,6 @@ handlePaymentInitialization({
   const List<String> currencies = ["USD", "NGN", "RWF", "UGX", "ZAR", "GHS"];
 
   String userEmail = "anthonyaniobi198@gmail.com";
-  String encryptionKey = "FLWSECK_TEST0a4b7bbf9590";
-  String publicKey = "FLWPUBK_TEST-f9bdb540634cec99284ef323b60f492c-X";
   String phoneNumber = "09092202826";
   String paymentNarration = "sample payment";
   String paymentAmount = amount.toString();
@@ -29,12 +60,12 @@ handlePaymentInitialization({
     appBarText: "PaymentTitle",
     buttonColor: Color(0xffd0ebff),
     buttonTextStyle: const TextStyle(
-      color: Theme.of(context).primaryColor,
+      color: Colors.black,
       fontSize: 16,
     ),
     appBarColor: Theme.of(context).bottomAppBarColor,
     dialogCancelTextStyle: const TextStyle(
-      color: Colors.black,
+      color: Colors.grey,
       fontSize: 18,
     ),
     dialogContinueTextStyle: const TextStyle(
@@ -45,10 +76,10 @@ handlePaymentInitialization({
     mainTextStyle:
         const TextStyle(color: Colors.black, fontSize: 19, letterSpacing: 2),
     dialogBackgroundColor: Colors.white,
-    appBarIcon: const Icon(Icons.payment, color: Colors.white),
+    appBarIcon: const Icon(Icons.payment, color: Colors.black),
     buttonText: "Pay $selectedCurrency$paymentAmount",
     appBarTitleTextStyle: const TextStyle(
-      color: Colors.white,
+      color: Colors.black,
       fontSize: 18,
     ),
   );
@@ -82,7 +113,8 @@ handlePaymentInitialization({
       return false;
     }
   } catch (e) {
-    print(e);
+    // print(e);
+    // Navigator.pop(context);
     return false;
   }
 }

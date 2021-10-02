@@ -103,3 +103,23 @@ unfortunately, the setup for ios application is currently not available
 <h2>Flutter wave</h2>
 
 An integration for payment using flutterwave. This is to simplify the process of adding payment to applicaitons
+
+The script for payment is located in the pay.dart file. The script initializes payments and performs all data formating such that the output for the file is either true or false,
+true - for a sucessful applicaiton  and
+false - for a failed application
+The function for payment is the makePayment() function
+
+```
+bool payhandler = makePayment(
+    context: context, 
+    amount: 100, 
+    currency: 1, 
+    encryptionKey: ENCRYPTION_KEY, 
+    publicKey: PUBLIC_KEY, 
+    phoneNumber: "PHONE_NUMBER", 
+    paymentNarration: "some narration", 
+    userName: "YOUR PAYMENT ACCOUNT", 
+    userEmail: "EMAIL", 
+    paymentTitle: "TITLE OF PAYMENT PAGE"
+);
+```
