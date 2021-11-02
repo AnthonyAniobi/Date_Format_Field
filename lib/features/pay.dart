@@ -48,7 +48,40 @@ Future<bool> handlePaymentInitialization({
   required String userEmail,
   required String paymentTitle,
 }) async {
-  const List<String> currencies = ["USD", "NGN", "RWF", "UGX", "ZAR", "GHS"];
+  const List<String> currencies = [
+    "GBP",
+    "CAD",
+    "CVE",
+    "CLP",
+    "COP",
+    "COF",
+    "EGP",
+    "EUR",
+    "GMD",
+    "GHS",
+    "GNF",
+    "KES",
+    "LRD",
+    "MWK",
+    "MAD",
+    "MZN",
+    "NGN"
+    "SOL",
+    "RWF",
+    "SLL",
+    "STD",
+    "ZAR",
+    "TZS",
+    "UGX",
+    "USD",
+    "XAF",
+    "XOF",
+    "ZMK",
+    "ZMW",
+    "BRL",
+    "MXN",
+    "ARS"
+  ];
 
   String userEmail = "anthonyaniobi198@gmail.com";
   String phoneNumber = "09092202826";

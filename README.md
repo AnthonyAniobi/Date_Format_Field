@@ -25,10 +25,14 @@ android{
 }
 ```
 
-<p>Add internet permission to your application</p>
+<p>Add internet permission to your application. This is added after the manifest tag and before the application tag</p>
 
 ```
-<uses-permission android:name="android.permission.INTERNET"/>
+<manifest xlmns:android...>
+ ...
+ <uses-permission android:name="android.permission.INTERNET" />
+ <application ...
+</manifest>
 ```
 
 <p>Import the library for the google mobile admob</p>
