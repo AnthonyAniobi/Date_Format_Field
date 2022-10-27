@@ -11,6 +11,11 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
+![issues](https://img.shields.io/github/issues/AnthonyAniobi/Date_Format_Field)
+![forks](https://img.shields.io/github/forks/AnthonyAniobi/Date_Format_Field)
+![stars](https://img.shields.io/github/stars/AnthonyAniobi/Date_Format_Field)
+![license](https://img.shields.io/github/license/AnthonyAniobi/Date_Format_Field)
+
 TODO: Put a short description of the package here that helps potential users
 know whether this package might be useful for them.
 
