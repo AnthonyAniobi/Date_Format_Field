@@ -38,7 +38,10 @@ class MyHomePage extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               const Text('Date Formater field'),
-              DateFormatField()
+              DateFormatField(
+                type: FormaterType.Type1,
+                // decoration: ,
+              )
             ],
           ),
         ),
