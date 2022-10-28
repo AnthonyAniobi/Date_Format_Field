@@ -1,3 +1,4 @@
+import 'package:date_format_field/src/formater.dart';
 import 'package:flutter/material.dart';
 
 enum DateFormatType {
@@ -8,7 +9,12 @@ enum DateFormatType {
 }
 
 class DateFormatField extends StatefulWidget {
-  const DateFormatField({super.key});
+  const DateFormatField({
+    super.key,
+    this.decoration,
+  });
+
+  final InputDecoration? decoration;
 
   @override
   State<DateFormatField> createState() => _DateFormatFieldState();
@@ -19,22 +25,7 @@ class _DateFormatFieldState extends State<DateFormatField> {
 
   void formatInput(String value) {
     /// formater for the text input field
-    if (value.length > 8) {
-      _dobFormater.text = value.substring(0, 8);
-    }
-    if (value.length == 3) {
-      _dobFormater.text = int.parse(value[2]) > 9
-          ? '${value.substring(0, 2)}/${value[2]}'
-          : '${value.substring(0, 2)}/0${value[2]}/';
-    }
-    if (value.length == 5) {
-      _dobFormater.text = int.parse(value.substring(3, 5)) > 12
-          ? '${value.substring(0, 2)}/0${value[2]}'
-          : value;
-    }
-    _dobFormater.selection = TextSelection.fromPosition(
-      TextPosition(offset: _dobFormater.text.length),
-    );
+    Formater.type1(value, _dobFormater);
     setState(() {});
   }
 
