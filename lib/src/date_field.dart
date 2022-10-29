@@ -20,7 +20,7 @@ class DateFormatField extends StatefulWidget {
   final InputDecoration? decoration;
 
   /// date format type
-  final FormaterType type;
+  final DateFormatType type;
 
   @override
   State<DateFormatField> createState() => _DateFormatFieldState();
@@ -32,21 +32,20 @@ class _DateFormatFieldState extends State<DateFormatField> {
   void formatInput(String value) {
     /// formater for the text input field
     switch (widget.type) {
-      case FormaterType.Type1:
+      case DateFormatType.type1:
         Formater.type1(value, _dobFormater);
         break;
-      case FormaterType.Type2:
+      case DateFormatType.type2:
         Formater.type2(value, _dobFormater);
         break;
-      case FormaterType.Type3:
+      case DateFormatType.type3:
         Formater.type3(value, _dobFormater);
         break;
-      case FormaterType.Type4:
+      case DateFormatType.type4:
         Formater.type4(value, _dobFormater);
         break;
       default:
     }
-    Formater.type2(value, _dobFormater);
     setState(() {});
   }
 

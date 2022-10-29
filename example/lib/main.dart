@@ -35,12 +35,15 @@ class MyHomePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-              const Text('Date Formater field'),
+            children: const [
+              SizedBox(height: 20),
+              Text('Date Formater field'),
               DateFormatField(
-                type: FormaterType.Type1,
-                // decoration: ,
+                type: DateFormatType.type4,
+                decoration: InputDecoration(
+                    hintText: 'DD/MM/YY',
+                    border: InputBorder.none,
+                    icon: Icon(Icons.calendar_month)),
               )
             ],
           ),

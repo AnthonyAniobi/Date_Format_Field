@@ -16,17 +16,64 @@ and the Flutter guide for
 ![stars](https://img.shields.io/github/stars/AnthonyAniobi/Date_Format_Field)
 ![license](https://img.shields.io/github/license/AnthonyAniobi/Date_Format_Field)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+
+A Textfield provides you with a textfield which provides automatic fomating of date time
+`Date_format_field` provides a text field
+
 
 ## Features
+This textfield supports four date time formating options:
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Type 1
 
-## Getting started
+<img src="screenshots/type1_formater.gif" width="350px">
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Type 2
+
+<img src="screenshots/type2_formater.gif" width="350px">
+
+Type 3
+
+<img src="screenshots/type3_formater.gif" width="350px">
+
+Type 4
+
+<img src="screenshots/type4_formater.gif" width="350px">
+
+
+## Usage
+
+1. Install the package by adding the following in your `pubspec.yaml` file
+```
+date_time_formater: latest_version
+```
+2. Add this field to your widget screen using 
+```
+import 'package:date_format_field/date_format_field.dart';
+
+DateFormatField(
+    type: DateFormatType.type4,
+)
+```
+
+*Add Styling* 
+
+The widget makes use of `InputDecorator` which is the same as the default styling supported by flutter
+
+example:
+
+```
+DateFormatField(
+    type: DateFormatType.type4,
+    decoration: InputDecoration(
+        hintText: 'DD/MM/YY',
+        border: InputBorder.none,
+        icon: Icon(Icons.calendar_month)
+    ),
+)
+```
+
+
 
 ## Usage
 
@@ -36,6 +83,7 @@ to `/example` folder.
 ```dart
 const like = 'sample';
 ```
+
 
 ## Additional information
 
