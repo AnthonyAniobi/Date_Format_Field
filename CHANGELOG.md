@@ -1,3 +1,9 @@
+## 0.0.2
+
+* Added Github to homepage
+* reduced minimum required skd version from `2.18.2` to `2.18.0`
+* Fixed image display on `README.md`
+
 ## 0.0.1
 
 * Set datetime formater textfield

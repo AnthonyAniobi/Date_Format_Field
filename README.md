@@ -10,35 +10,52 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
+<!-- [![pub package version](https://img.shields.io/pub/v/persistent_bottom_nav_bar)](https://pub.dev/packages/persistent_bottom_nav_bar) -->
+[![issues](https://img.shields.io/github/issues/AnthonyAniobi/Date_Format_Field)](https://github.com/AnthonyAniobi/Date_Format_Field)
+[![forks](https://img.shields.io/github/forks/AnthonyAniobi/Date_Format_Field)](https://github.com/AnthonyAniobi/Date_Format_Field)
+[![stars](https://img.shields.io/github/stars/AnthonyAniobi/Date_Format_Field)](https://github.com/AnthonyAniobi/Date_Format_Field)
+[![license](https://img.shields.io/github/license/AnthonyAniobi/Date_Format_Field)](https://github.com/AnthonyAniobi/Date_Format_Field)
 
-![issues](https://img.shields.io/github/issues/AnthonyAniobi/Date_Format_Field)
-![forks](https://img.shields.io/github/forks/AnthonyAniobi/Date_Format_Field)
-![stars](https://img.shields.io/github/stars/AnthonyAniobi/Date_Format_Field)
-![license](https://img.shields.io/github/license/AnthonyAniobi/Date_Format_Field)
+
+A Textfield supporting automatic date formating. 
 
 
-A Textfield provides you with a textfield which provides automatic fomating of date time
-`Date_format_field` provides a text field
+## Styles
+
+Type 1
+
+<img src="https://github.com/AnthonyAniobi/Date_Format_Field/blob/main/screenshots/type1_formater.gif?raw=true" width="350px">
+
+Type 2
+
+<img src="https://github.com/AnthonyAniobi/Date_Format_Field/blob/main/screenshots/type2_formater.gif?raw=true" width="350px">
+
+Type 3
+
+<img src="https://github.com/AnthonyAniobi/Date_Format_Field/blob/main/screenshots/type3_formater.gif?raw=true" width="350px">
+
+Type 4
+
+<img src="https://github.com/AnthonyAniobi/Date_Format_Field/blob/main/screenshots/type4_formater.gif?raw=true" width="350px">
+
 
 
 ## Features
 This textfield supports four date time formating options:
 
-Type 1
+- Four Date formating styles
+- Automatic addition of separators
+- Two Spearators for time formating
+- Sets Keboard type to date keyboard
 
-<img src="screenshots/type1_formater.gif" width="350px">
 
-Type 2
+## Getting Started
 
-<img src="screenshots/type2_formater.gif" width="350px">
-
-Type 3
-
-<img src="screenshots/type3_formater.gif" width="350px">
-
-Type 4
-
-<img src="screenshots/type4_formater.gif" width="350px">
+In your flutter project `pubspec.yaml` add the dependency
+```
+dependencies:
+  date_time_formater: any
+```
 
 
 ## Usage
@@ -73,20 +90,3 @@ DateFormatField(
 )
 ```
 
-
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
-
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
