@@ -5,6 +5,20 @@ class Formater {
     return int.parse(input);
   }
 
+  static DateTime _parseDateTimeShort(String input) {
+    int day = int.parse(input.substring(0, 2));
+    int month = int.parse(input.substring(3, 5));
+    int year = int.parse(input.substring(6, 8));
+    return DateTime(year + 2000, month, day);
+  }
+
+  static DateTime _parseDateTimeLong(String input) {
+    int day = int.parse(input.substring(0, 2));
+    int month = int.parse(input.substring(3, 5));
+    int year = int.parse(input.substring(6, 10));
+    return DateTime(year, month, day);
+  }
+
   static void _typeTemplate(String input, TextEditingController controller,
       String seperator, int lastIndex) {
     switch (input.length) {
@@ -49,19 +63,39 @@ class Formater {
     );
   }
 
-  static void type1(String input, TextEditingController controller) {
-    _typeTemplate(input, controller, '/', 9);
+  static DateTime? type1(String input, TextEditingController controller) {
+    int maxLength = 9;
+    _typeTemplate(input, controller, '/', maxLength);
+    if (input.length >= maxLength - 1) {
+      return _parseDateTimeShort(input);
+    }
+    return null;
   }
 
-  static void type2(String input, TextEditingController controller) {
-    _typeTemplate(input, controller, '/', 11);
+  static DateTime? type2(String input, TextEditingController controller) {
+    int maxLength = 11;
+    _typeTemplate(input, controller, '/', maxLength);
+    if (input.length >= maxLength - 1) {
+      return _parseDateTimeLong(input);
+    }
+    return null;
   }
 
-  static void type3(String input, TextEditingController controller) {
-    _typeTemplate(input, controller, '-', 9);
+  static DateTime? type3(String input, TextEditingController controller) {
+    int maxLength = 9;
+    _typeTemplate(input, controller, '-', maxLength);
+    if (input.length >= maxLength - 1) {
+      return _parseDateTimeShort(input);
+    }
+    return null;
   }
 
-  static void type4(String input, TextEditingController controller) {
-    _typeTemplate(input, controller, '-', 11);
+  static DateTime? type4(String input, TextEditingController controller) {
+    int maxLength = 11;
+    _typeTemplate(input, controller, '-', maxLength);
+    if (input.length >= maxLength - 1) {
+      return _parseDateTimeLong(input);
+    }
+    return null;
   }
 }

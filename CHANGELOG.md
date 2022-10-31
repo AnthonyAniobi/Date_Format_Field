@@ -1,3 +1,8 @@
+## 0.0.3
+
+* Added `onComplete` callback to get `Datetime`
+* Added calendar widget to select widget
+
 ## 0.0.2
 
 * Added Github to homepage
