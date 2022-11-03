@@ -1,6 +1,17 @@
-import 'package:date_format_field/date_format_field.dart';
 import 'package:date_format_field/src/formater.dart';
 import 'package:flutter/material.dart';
+
+/// [DateFormatType] enum specifies the formating option for the date format
+/// field.
+///
+/// example:
+///
+/// The date -> 2nd November 2022 is displayed in the different types as:
+///
+/// [type1] => 02/11/22
+/// [type2] => 02/11/2022
+/// [type3] => 02-11-22
+/// [type4] => 02-11-2022
 
 enum DateFormatType {
   type1, // 12/02/22
@@ -8,6 +19,30 @@ enum DateFormatType {
   type3, // 12-02-22
   type4, // 12-02-2022
 }
+
+/// Base class for [DateFormatField]
+///
+/// [DateFormtField] automatically adds serparators to a custom datefield.
+/// Specify the type of separators using the [DateFormatType] enumerators
+///
+/// Required inputs are:
+///
+/// [type] -> specifies the type of formating option
+///
+/// [onComplete] -> function providing a nullable [DateTime] object of your
+/// selected date. The [onComplete] Datetime parameter remains null untill the
+/// [DateFormatField] has been filled as required by the [DateFormatType] then
+/// it returns a [DateTime] object based on your input.
+///
+/// Optional Inputs:
+///
+/// [addCalendar] -> sets the calendar icon on the [DateFormatField] which
+/// can be used to select date using a date selection modal screen. The default
+/// value is [true]
+///
+/// [decoration] -> this is the input for styling the [DateFormatField] this
+/// is the same as the [InputDecoration] class for flutter default [TextFields]
+/// so all styling on Textfield applies same here.
 
 class DateFormatField extends StatefulWidget {
   const DateFormatField({
@@ -49,18 +84,22 @@ class _DateFormatFieldState extends State<DateFormatField> {
     }
     if (widget.decoration == null) {
       return InputDecoration(
-          suffixIcon: IconButton(
-              onPressed: () {
-                pickDate();
-              },
-              icon: Icon(Icons.calendar_month)));
+        suffixIcon: IconButton(
+          onPressed: () {
+            pickDate();
+          },
+          icon: const Icon(
+            Icons.calendar_month,
+          ),
+        ),
+      );
     }
     return widget.decoration!.copyWith(
       suffixIcon: IconButton(
           onPressed: () {
             pickDate();
           },
-          icon: Icon(Icons.calendar_month)),
+          icon: const Icon(Icons.calendar_month)),
     );
   }
 
@@ -97,9 +136,25 @@ class _DateFormatFieldState extends State<DateFormatField> {
       lastDate: DateTime(2101),
     );
     if (picked != null && picked != DateTime.now()) {
+      String inputText;
+      switch (widget.type) {
+        case DateFormatType.type1:
+          inputText = '${picked.day}/${picked.month}/${picked.year % 100}';
+          break;
+        case DateFormatType.type2:
+          inputText = '${picked.day}/${picked.month}/${picked.year}';
+          break;
+        case DateFormatType.type3:
+          inputText = '${picked.day}-${picked.month}-${picked.year % 100}';
+          break;
+        case DateFormatType.type4:
+          inputText = '${picked.day}-${picked.month}-${picked.year}';
+          break;
+        default:
+          inputText = '';
+      }
       setState(() {
-        _dobFormater.text =
-            '${picked.day}/${picked.month}/${picked.year % 100}';
+        _dobFormater.text = inputText;
       });
     }
   }

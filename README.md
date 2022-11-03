@@ -106,11 +106,11 @@ By default a calendar icon is attached as the trailling icon which triggers a `D
 
 Calendar Icon on `DateFormatField`
 
-<img src="https://github.com/AnthonyAniobi/Date_Format_Field/blob/main/screenshots/date_selection.png?raw=true" width="350px">
+<img src="https://github.com/AnthonyAniobi/Date_Format_Field/blob/main/screenshots/textfield_calendar.png?raw=true" width="350px">
 
 Modal on clicking calendar Icon
 
-<img src="https://github.com/AnthonyAniobi/Date_Format_Field/blob/main/screenshots/textfield_calendar.png?raw=true" width="350px">
+<img src="https://github.com/AnthonyAniobi/Date_Format_Field/blob/main/screenshots/date_selection.png?raw=true" width="350px">
 
 Selecting a date prefills the DateFormatField using the selected date.
 
