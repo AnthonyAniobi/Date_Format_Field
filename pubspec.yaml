@@ -1,10 +1,10 @@
 name: date_format_field
 description: An automatic date formater widget.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/AnthonyAniobi/Date_Format_Field
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: ">=2.18.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
