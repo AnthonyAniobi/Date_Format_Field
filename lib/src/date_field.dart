@@ -51,7 +51,7 @@ class DateFormatField extends StatefulWidget {
     required this.type,
     this.addCalendar = true,
     this.decoration,
-    this.dobFormater,
+    this.controller,
   });
 
   /// [InputDecoration] a styling class for form field
@@ -74,7 +74,7 @@ class DateFormatField extends StatefulWidget {
 
   /// TextEditingController for the date format field
   /// This is used to control the input text
-  final TextEditingController? dobFormater;
+  final TextEditingController? controller;
   @override
   State<DateFormatField> createState() => _DateFormatFieldState();
 }
@@ -83,7 +83,7 @@ class _DateFormatFieldState extends State<DateFormatField> {
   late final TextEditingController _dobFormater;
   @override
   void initState() {
-    _dobFormater = widget.dobFormater ?? TextEditingController();
+    _dobFormater = widget.controller ?? TextEditingController();
     super.initState();
   }
 
