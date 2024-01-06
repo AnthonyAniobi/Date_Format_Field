@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
               const Text('Date Formater field'),
               DateFormatField(
                 type: DateFormatType.type4,
-                addCalendar: false,
+                addCalendar: true,
                 decoration: const InputDecoration(
                   labelStyle: TextStyle(
                     fontWeight: FontWeight.bold,

@@ -1,3 +1,9 @@
+## 0.0.5
+
+- Fix issue `#2` on `getting NULL while date choose from calendar Icon, after selection month filled only 8 instead of 08`
+- Add date date formater
+
+
 ## 0.0.4
 
 - Upgrade dependencies

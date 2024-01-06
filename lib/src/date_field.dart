@@ -139,16 +139,20 @@ class _DateFormatFieldState extends State<DateFormatField> {
       String inputText;
       switch (widget.type) {
         case DateFormatType.type1:
-          inputText = '${picked.day}/${picked.month}/${picked.year % 100}';
+          inputText =
+              '${padDayMonth(picked.day)}/${padDayMonth(picked.month)}/${picked.year % 100}';
           break;
         case DateFormatType.type2:
-          inputText = '${picked.day}/${picked.month}/${picked.year}';
+          inputText =
+              '${padDayMonth(picked.day)}/${padDayMonth(picked.month)}/${picked.year}';
           break;
         case DateFormatType.type3:
-          inputText = '${picked.day}-${picked.month}-${picked.year % 100}';
+          inputText =
+              '${padDayMonth(picked.day)}-${padDayMonth(picked.month)}-${picked.year % 100}';
           break;
         case DateFormatType.type4:
-          inputText = '${picked.day}-${picked.month}-${picked.year}';
+          inputText =
+              '${padDayMonth(picked.day)}-${padDayMonth(picked.month)}-${picked.year}';
           break;
         default:
           inputText = '';
@@ -173,4 +177,6 @@ class _DateFormatFieldState extends State<DateFormatField> {
       onChanged: formatInput,
     );
   }
+
+  String padDayMonth(int value) => value.toString().padLeft(2, '0');
 }
