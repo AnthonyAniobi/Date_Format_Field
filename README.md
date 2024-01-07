@@ -15,6 +15,7 @@ This textfield supports four date time formating options:
 - Automatic addition of separators
 - Two Spearators for time formating
 - Sets Keboard type to date keyboard
+- Input Formater for inplementation in basic keyboards
 
 ## Getting Started
 

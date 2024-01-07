@@ -44,6 +44,7 @@ enum DateFormatType {
 /// is the same as the [InputDecoration] class for flutter default [TextFields]
 /// so all styling on Textfield applies same here.
 
+// @Deprecated('Make use of DateFormField or DateField')
 class DateFormatField extends StatefulWidget {
   const DateFormatField({
     super.key,
