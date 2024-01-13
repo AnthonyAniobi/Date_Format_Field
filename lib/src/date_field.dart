@@ -52,6 +52,9 @@ class DateFormatField extends StatefulWidget {
     this.addCalendar = true,
     this.decoration,
     this.controller,
+    this.initialDate,
+    this.firstDate,
+    this.lastDate,
   });
 
   /// [InputDecoration] a styling class for form field
@@ -72,6 +75,15 @@ class DateFormatField extends StatefulWidget {
   /// calendar pop up
   final bool addCalendar;
 
+  /// [initialDate] set init day before show datetime picker
+  final DateTime? initialDate;
+
+  /// [lastDate] set last date show in datetime picker
+  final DateTime? lastDate;
+
+  /// [firstDate] set first date show in date time picker
+  final DateTime? firstDate;
+
   /// TextEditingController for the date format field
   /// This is used to control the input text
   final TextEditingController? controller;
@@ -81,6 +93,7 @@ class DateFormatField extends StatefulWidget {
 
 class _DateFormatFieldState extends State<DateFormatField> {
   late final TextEditingController _dobFormater;
+
   @override
   void initState() {
     _dobFormater = widget.controller ?? TextEditingController();
@@ -88,51 +101,46 @@ class _DateFormatFieldState extends State<DateFormatField> {
   }
 
   InputDecoration? decoration() {
-    if (!widget.addCalendar) {
-      return widget.decoration;
-    }
+    if (!widget.addCalendar) return widget.decoration;
+
     if (widget.decoration == null) {
       return InputDecoration(
         suffixIcon: IconButton(
-          onPressed: () {
-            pickDate();
-          },
-          icon: const Icon(
-            Icons.calendar_month,
-          ),
+          onPressed: pickDate,
+          icon: const Icon(Icons.calendar_month),
         ),
       );
     }
+
     return widget.decoration!.copyWith(
       suffixIcon: IconButton(
-          onPressed: () {
-            pickDate();
-          },
-          icon: const Icon(Icons.calendar_month)),
+        onPressed: pickDate,
+        icon: const Icon(Icons.calendar_month),
+      ),
     );
   }
 
   void formatInput(String value) {
     /// formater for the text input field
-    DateTime? _completeDate;
+    DateTime? completeDate;
     switch (widget.type) {
       case DateFormatType.type1:
-        _completeDate = Formater.type1(value, _dobFormater);
+        completeDate = Formater.type1(value, _dobFormater);
         break;
       case DateFormatType.type2:
-        _completeDate = Formater.type2(value, _dobFormater);
+        completeDate = Formater.type2(value, _dobFormater);
         break;
       case DateFormatType.type3:
-        _completeDate = Formater.type3(value, _dobFormater);
+        completeDate = Formater.type3(value, _dobFormater);
         break;
       case DateFormatType.type4:
-        _completeDate = Formater.type4(value, _dobFormater);
+        completeDate = Formater.type4(value, _dobFormater);
         break;
       default:
     }
     setState(() {
       // update the datetime
-      widget.onComplete(_completeDate);
+      widget.onComplete(completeDate);
     });
   }
 
@@ -140,9 +148,9 @@ class _DateFormatFieldState extends State<DateFormatField> {
     /// pick the date directly from the screen
     final picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2015, 8),
-      lastDate: DateTime(2101),
+      initialDate: widget.initialDate,
+      firstDate: widget.firstDate ?? DateTime(2015, 8),
+      lastDate: widget.lastDate ?? DateTime(2101),
     );
     if (picked != null && picked != DateTime.now()) {
       String inputText;
