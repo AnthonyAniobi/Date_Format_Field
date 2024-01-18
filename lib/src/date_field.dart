@@ -55,6 +55,7 @@ class DateFormatField extends StatefulWidget {
     this.initialDate,
     this.firstDate,
     this.lastDate,
+    this.focusNode,
   });
 
   /// [InputDecoration] a styling class for form field
@@ -83,6 +84,9 @@ class DateFormatField extends StatefulWidget {
 
   /// [firstDate] set first date show in date time picker
   final DateTime? firstDate;
+
+  /// [focusNode] set focusNode for DateFormatField
+  final FocusNode? focusNode;
 
   /// TextEditingController for the date format field
   /// This is used to control the input text
@@ -189,6 +193,7 @@ class _DateFormatFieldState extends State<DateFormatField> {
           TextPosition(offset: _dobFormater.text.length),
         );
       },
+      focusNode: widget.focusNode,
       decoration: decoration(),
       keyboardType: TextInputType.datetime,
       onChanged: formatInput,
