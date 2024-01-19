@@ -83,9 +83,11 @@ class DateFormatField extends StatefulWidget {
   final DateTime? lastDate;
 
   /// [firstDate] set first date show in date time picker
+  /// the default value is 1000-0-0
   final DateTime? firstDate;
 
   /// [focusNode] set focusNode for DateFormatField
+  /// the default value is 3000-0-0
   final FocusNode? focusNode;
 
   /// TextEditingController for the date format field
@@ -153,10 +155,10 @@ class _DateFormatFieldState extends State<DateFormatField> {
     final picked = await showDatePicker(
       context: context,
       initialDate: widget.initialDate,
-      firstDate: widget.firstDate ?? DateTime(2015, 8),
-      lastDate: widget.lastDate ?? DateTime(2101),
+      firstDate: widget.firstDate ?? DateTime(1000),
+      lastDate: widget.lastDate ?? DateTime(3000),
     );
-    if (picked != null && picked != DateTime.now()) {
+    if (picked != null) {
       String inputText;
       switch (widget.type) {
         case DateFormatType.type1:
@@ -181,6 +183,7 @@ class _DateFormatFieldState extends State<DateFormatField> {
       setState(() {
         _dobFormater.text = inputText;
       });
+      widget.onComplete(picked);
     }
   }
 

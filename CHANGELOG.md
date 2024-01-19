@@ -1,3 +1,8 @@
+## 0.1.0
+
+- Fix issue `#3` on `Null values in calendar picker`
+
+
 ## 0.0.5
 
 - Fix issue `#2` on `getting NULL while date choose from calendar Icon, after selection month filled only 8 instead of 08`
